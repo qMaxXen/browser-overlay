@@ -5,6 +5,8 @@
 
 A program that displays a website in an always-on-top window. This is mainly useful for **single-monitor** users, but also helpful for those with a second monitor.
 
+If you only want Twitch chat, you can use [Twitch Chat Overlay](https://github.com/qMaxXen/twitch-chat-overlay) which is more minimal and lightweight. If you want more customization of the chat, use this program with a link generated with [crazysmc's tchat generator](https://crazysmc.github.io/tchat.html).
+
 ## Installation
 
 1. Go to the [releases](https://github.com/qMaxXen/browser-overlay/releases/latest) section of this repository and download `browser-overlay-v1.0.0.tar.xz`.
