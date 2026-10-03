@@ -54,6 +54,7 @@ def read_css(file_name):
     css_file = Path(__file__).parent / file_name
     if not css_file.exists():
         return ""
+    print("Using", css_file)
     return css_file.read_text()
 
 def add_css(window, css):
@@ -95,6 +96,7 @@ if __name__ == "__main__":
     os.environ["QT_QPA_PLATFORM"] = "xcb"
 
     print("Browser Overlay")
+    print("To configure Browser Overlay, edit ~/.config/browser-overlay/config.toml")
 
     app = QApplication()
 
