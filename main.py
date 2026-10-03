@@ -113,7 +113,7 @@ if __name__ == "__main__":
     signal(SIGINT, SIG_DFL)
     os.environ["QT_QPA_PLATFORM"] = "xcb"
 
-    print("Browser Overlay")
+    print("Browser Overlay", APP_VERSION)
     print("To configure Browser Overlay, edit ~/.config/browser-overlay/config.toml")
 
     app = QApplication()
