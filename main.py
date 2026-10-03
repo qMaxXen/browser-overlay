@@ -8,6 +8,10 @@ import tomllib
 from PySide6.QtWebEngineCore import QWebEngineScript
 import json
 from PySide6.QtGui import QColor
+from core.updater import check_for_update, check_and_update
+
+# Program version
+APP_VERSION = 'v1.0.0'
 
 config_file = Path.home() / ".config" / "browser-overlay" / "config.toml"
 windows = []
@@ -92,6 +96,20 @@ def create_window(window_config):
     return window
 
 if __name__ == "__main__":
+    latest = check_for_update(APP_VERSION)
+    if latest:
+        print("=== New Release Available! ===")
+        print(f"Version: {latest}")
+        print("You should update to the latest version!")
+        print("1) Continue with the current version")
+        print("2) Automatically update to the latest version")
+        choice = input("Enter choice [1/2]: ").strip()
+        print()
+        if choice == "2":
+            check_and_update(APP_VERSION, os.path.dirname(os.path.abspath(__file__)))
+        else:
+            print(f"Skipping update, continuing with {APP_VERSION}\n")
+
     signal(SIGINT, SIG_DFL)
     os.environ["QT_QPA_PLATFORM"] = "xcb"
 
