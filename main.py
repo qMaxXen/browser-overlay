@@ -25,6 +25,7 @@ url = "https://example.com" # url of website
 custom_css = "style.css" # assumes the directory of the main script, set to "" to disable
 width = 1280 # width of window
 height = 720 # height of window
+scale = 100 # scale of the window in percent
 click_through = false # makes the window click-through
 x = 100
 y = 100
@@ -37,6 +38,7 @@ url = "https://example.com"
 custom_css = "style.css"
 width = 1280
 height = 720
+scale = 100
 click_through = false
 x = 100
 y = 100
@@ -85,7 +87,10 @@ def create_window(window_config):
         window.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint | Qt.WindowType.Tool | Qt.WindowType.X11BypassWindowManagerHint)
     window.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
     window.setAttribute(Qt.WidgetAttribute.WA_NoSystemBackground)
-    window.resize(window_config.get("width", 1280), window_config.get("height", 720))
+    scale = window_config.get("scale", 100) / 100
+    width = window_config.get("width", 1280)
+    height = window_config.get("height", 720)
+    window.resize(round(width * scale), round(height * scale))
     window.move(window_config.get("x", 100), window_config.get("y", 100))
     custom_css = read_css(window_config.get("custom_css", ""))
     if custom_css:
